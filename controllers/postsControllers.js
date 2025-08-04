@@ -1,14 +1,22 @@
+
+//importo l'array contenuto in dataPosts
+const posts = require('../data/dataPosts.js');
+
 //rotta INDEX
 const index = (req, res) =>{
 
-  res.send("Lista dei Posts");
+  res.json(posts);
 
 };
 
 //rotta SHOW
 const show = (req, res) =>{
 
-  res.send(`Dettaglio del post con id:${req.params.id}`);
+  const id = parseInt(req.params.id);
+
+  const post = posts.find(item => item.id === id);
+
+  res.json(post);
 
 };
 
@@ -36,7 +44,15 @@ const modify = (req, res) =>{
 //rotta DELETE
 const destroy = (req, res) =>{
 
-  res.send(`Cancellazione del post con id: ${req.params.id}`);
+  const id = parseInt(req.params.id);
+
+  const post = posts.find(item => item.id === id);
+
+  posts.splice(posts.indexOf(post), 1);
+
+  res.sendStatus(204);
+
+  console.log(posts);
 
 };
 
