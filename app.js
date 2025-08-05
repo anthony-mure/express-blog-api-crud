@@ -13,6 +13,9 @@ const postRouter = require('./routers/routerPosts');
 //inserisco il middleware dei file statici
 app.use(express.static('public'));
 
+//inserisco il body-parser per decifrare  il request body
+app.use(express.json());
+
 //uso il router
 app.use('/posts', postRouter);
 

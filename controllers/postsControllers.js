@@ -25,6 +25,8 @@ const store = (req, res) =>{
 
   res.send('Creazione di un nuovo post');
 
+  console.log(req.body);
+
 };
 
 //rotta UPDATE
