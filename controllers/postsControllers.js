@@ -27,6 +27,13 @@ const show = (req, res) =>{
 
   const post = posts.find(item => item.id === id);
 
+ //controllo se il post è esistente, in caso contrario, return status 404 e un messaggio d’errore 
+  if(!post){
+
+    return res.status(404).json({ error : "404 NOT FOUND", message : "Il post NON è presente!"});
+    
+  }
+
   res.json(post);
 
 };
