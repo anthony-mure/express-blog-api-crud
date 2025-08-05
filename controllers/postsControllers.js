@@ -5,7 +5,18 @@ const posts = require('../data/dataPosts.js');
 //rotta INDEX
 const index = (req, res) =>{
 
-  res.json(posts);
+  //recupero i parametri passati da query string
+  const tag = req.query.tags;
+
+  //definisco un array da restituire
+  let filteredPosts = posts;
+
+  //controllo il valore di tags e se esiste eseguo il filtraggio
+  if(tag){
+    filteredPosts = posts.filter(item => item.tags.includes(tag.toLowerCase()));
+  };
+
+  res.json(filteredPosts);
 
 };
 
