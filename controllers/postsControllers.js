@@ -48,7 +48,21 @@ const store = (req, res) =>{
 //rotta UPDATE
 const update = (req, res) =>{
 
-  res.send(`Modifica totale del post con id: ${req.params.id}`);
+  //recupero l'id della richiesta del body per recuperare il post nell'array
+  const id = parseInt(req.params.id);
+
+  //recupero il post nell'array
+  const post = posts.find(item => item.id === id);
+
+  //modifica delle risorse
+  post.titolo = req.body.titolo;
+  post.contenuto = req.body.contenuto;
+  post.immagine = req.body.immagine;
+  post.tags = req.body.tags;
+
+  res.send(post);
+
+  console.log(post);
 
 };
 
