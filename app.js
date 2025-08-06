@@ -13,6 +13,9 @@ const postRouter = require('./routers/routerPosts');
 //importo il middleware notFound
 const notFound = require('./middleware/notFound.js');
 
+//importo il middleware errorsHandler
+const errorsHandler = require('./middleware/errorsHandler.js');
+
 //inserisco il middleware dei file statici
 app.use(express.static('public'));
 
@@ -24,6 +27,9 @@ app.use('/posts', postRouter);
 
 //uso il middleware notFound
 app.use(notFound);
+
+//uso il middleware errorsHandler
+app.use(errorsHandler);
 
 //definisco la 1 rotta
 app.get('/',(req, res) =>{
