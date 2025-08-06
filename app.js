@@ -10,6 +10,9 @@ const port = 3000;
 //importo il file router per i posts
 const postRouter = require('./routers/routerPosts');
 
+//importo il middleware notFound
+const notFound = require('./middleware/notFound.js');
+
 //inserisco il middleware dei file statici
 app.use(express.static('public'));
 
@@ -18,6 +21,9 @@ app.use(express.json());
 
 //uso il router
 app.use('/posts', postRouter);
+
+//uso il middleware notFound
+app.use(notFound);
 
 //definisco la 1 rotta
 app.get('/',(req, res) =>{
