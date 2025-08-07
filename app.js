@@ -25,11 +25,6 @@ app.use(express.json());
 //uso il router
 app.use('/posts', postRouter);
 
-//uso il middleware notFound
-app.use(notFound);
-
-//uso il middleware errorsHandler
-app.use(errorsHandler);
 
 //definisco la 1 rotta
 app.get('/',(req, res) =>{
@@ -38,7 +33,11 @@ app.get('/',(req, res) =>{
 
 });
 
+//uso il middleware notFound
+app.use(notFound);
 
+//uso il middleware errorsHandler
+app.use(errorsHandler);
 
 //restiamo in ascolto sulla porta 3000
 app.listen(port, () =>{
